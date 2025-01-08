@@ -1,0 +1,3 @@
+I thought this project would be boring and that I wouldn't learn anything new from it. But I am shocked, because through this project I learned about the __dangerouslySetInnerHTML__ attribute in React. I think this has been a great exploration for me. I thought only experts knew about this attribute. 
+
+Also, I know about the __DOMPurify__ library, which uses the __sanitize__ method to safely use the __dangerouslySetInnerHTML__ attribute.
