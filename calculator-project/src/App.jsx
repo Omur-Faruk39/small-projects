@@ -19,6 +19,10 @@ function App() {
     setValue("");
   };
 
+  const clearOne = () => {
+    setValue(value.slice(0, -1));
+  }
+
   return (
     <div className="text-red-500 max-w-[200px]">
       <RenderPara value={value} />
@@ -27,21 +31,25 @@ function App() {
         <button onClick={cleanerHandelar} className="text-green-400 text-4xl">
           c
         </button>
-        <NumberButton buttonNum={"&#xd7;"} func={numButtonClickHandelar} color="text-green-400"/>
-        <NumberButton buttonNum={"/"} func={numButtonClickHandelar} color="text-green-400"/>
-        <NumberButton buttonNum={1} func={numButtonClickHandelar} color="text-black" />
-        <NumberButton buttonNum={2} func={numButtonClickHandelar} color="text-black"/>
-        <NumberButton buttonNum={3} func={numButtonClickHandelar} color="text-black"/>
-        <NumberButton buttonNum={4} func={numButtonClickHandelar} color="text-black"/>
-        <NumberButton buttonNum={5} func={numButtonClickHandelar} color="text-black"/>
-        <NumberButton buttonNum={6} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={"&#xF7;"} func={value ? numButtonClickHandelar : null} color="text-green-500"/>
+        <NumberButton buttonNum={"&#xd7;"} func={value ? numButtonClickHandelar : null} color="text-green-500"/>
+        <button onClick={clearOne} className="text-green-400 text-[20px] font-bold rounded-full hover:bg-gray-200 p-2 pr-5 pl-3 active:bg-gray-300 ">&#x232B;</button>
         <NumberButton buttonNum={7} func={numButtonClickHandelar} color="text-black"/>
         <NumberButton buttonNum={8} func={numButtonClickHandelar} color="text-black"/>
         <NumberButton buttonNum={9} func={numButtonClickHandelar} color="text-black"/>
-        <NumberButton buttonNum={"-"} func={numButtonClickHandelar} />
-        <NumberButton buttonNum={"+"} func={numButtonClickHandelar} />
+        <NumberButton buttonNum={"-"} func={value ? numButtonClickHandelar : null} color="text-green-500" />
+        <NumberButton buttonNum={4} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={5} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={6} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={"+"} func={value ? numButtonClickHandelar : null} color="text-green-500"/>
+        <NumberButton buttonNum={1} func={numButtonClickHandelar} color="text-black" />
+        <NumberButton buttonNum={2} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={3} func={numButtonClickHandelar} color="text-black"/>
+        <button onClick={value ? equalHandelar : null} className="bg-green-500  text-white row-span-4 rounded-xl active:bg-green-600 text-4xl">=</button>
+        <NumberButton buttonNum={'%'} func={null} color="text-black"/>
+        <NumberButton buttonNum={'0'} func={numButtonClickHandelar} color="text-black"/>
+        <NumberButton buttonNum={'.'} func={numButtonClickHandelar} color="text-black"/>
 
-        <button onClick={equalHandelar}>=</button>
       </div>
     </div>
   );
