@@ -10,8 +10,14 @@ function App() {
   };
 
   const equalHandelar = () => {
-    const result = eval(value);
+    let result;
 
+    if(value.includes('%')) {
+      const newValue = value.replace('%', '/100*');
+      result = eval(newValue);      
+    } else {
+      result = eval(value);
+    }
     setValue(result);
   };
 
@@ -20,7 +26,7 @@ function App() {
   };
 
   const clearOne = () => {
-    setValue(value.slice(0, -1));
+    setValue(value.toString().slice(0, (value.length -1)));
   }
 
   return (
@@ -46,10 +52,9 @@ function App() {
         <NumberButton buttonNum={2} func={numButtonClickHandelar} color="text-black"/>
         <NumberButton buttonNum={3} func={numButtonClickHandelar} color="text-black"/>
         <button onClick={value ? equalHandelar : null} className="bg-green-500  text-white row-span-4 rounded-xl active:bg-green-600 text-4xl">=</button>
-        <NumberButton buttonNum={'%'} func={null} color="text-black"/>
+        <NumberButton buttonNum={'%'} func={numButtonClickHandelar} color="text-black"/>
         <NumberButton buttonNum={'0'} func={numButtonClickHandelar} color="text-black"/>
         <NumberButton buttonNum={'.'} func={numButtonClickHandelar} color="text-black"/>
-
       </div>
     </div>
   );

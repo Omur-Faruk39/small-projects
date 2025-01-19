@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated input</title>
+  <style>
+    div {
+      width: 100%;
+      position: relative;
+    }
+    input {
+      height: 35px;
+      width: 250px;
+      margin: 50px;
+      font-size: 22px;
+      padding-left: 10px;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 5px;
+    }
+    p {
+      position: absolute;
+      font-size: 22px;
+      top: 35px;
+      left: 55px;
+      padding: 0 10px;
+      background-color: white;
+      transition: all 0.2s;
+    }
+    input:focus + p,
+    input:not(:placeholder-shown) + p {
+      font-size: 16px;
+      top: 27px;
+      left: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text" placeholder=" ">
+    <p>Your Name</p>
+  </div>
+  <script>
+    const input = document.querySelector('input');
+    const label = document.querySelector('p');
+
+    label.addEventListener('click', () => {
+      input.focus();
+    });
+
+    input.addEventListener('blur', () => {
+      if (input.value === "") {
+        label.style.fontSize = '';
+        label.style.top = '';
+        label.style.left = '';
+      }
+    });
+  </script>
+</body>
+</html>
