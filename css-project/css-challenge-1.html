@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    .main-div {
+      background-color: rgb(0, 0, 0);
+      width: 450px;
+      height: 450px;
+      margin: 100px auto;
+    }
+
+    .effect {
+      width: 100vw;
+      height: 100vw;
+      position: fixed;
+      z-index: 10;
+      animation: light-effect 4s linear infinite;
+    }
+
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #7DDFFC;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .land {
+      position: absolute;
+      background-color: rgb(248, 250, 137);
+      top: 320px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .left-side {
+      position: absolute;
+      clip-path: polygon(50% 175px, 58% 320px, 22% 320px);
+      background-color: white;
+      width: 450px;
+      height: 450px;
+      animation: left-side 4s cubic-bezier(0.4, 0, 0.49, 1) infinite forwards;
+    }
+
+    @keyframes left-side {
+      0% {
+        background-color: white;
+      }
+      20% {
+        background-color: #F4F4F4;
+      }
+
+      70% {
+        background-color: #dddada;
+      }
+      100% {
+        background-color: #555555;
+      }
+    }
+
+
+
+    @keyframes right-side {
+      0% {
+        background-color: white;
+      }
+      20% {
+        background-color: #F4F4F4;
+      }
+
+      70% {
+        background-color: #dddada;
+      }
+      100% {
+        background-color: #272C34;
+      }
+    }
+    .circle>div:nth-child(3) {
+      position: absolute;
+      clip-path: polygon(50% 175px, 57.5% 320px, 74% 320px);
+      background-color: rgb(255, 255, 255);
+      width: 450px;
+      height: 450px;
+      animation: right-side 4s cubic-bezier(0.4, 0, 0.49, 1) infinite reverse;
+    }
+
+    .circle>div:nth-child(4) {
+      z-index: 1;
+      position: absolute;
+      width: 50px;
+      border-radius: 50%;
+      height: 50px;
+      top: 195px;
+      left: -60px;
+      background-color: #FFEF00;
+      transform-origin: 275px 145px;
+      animation: sun 4s cubic-bezier(0.4, 0, 0.49, 1) infinite;
+    }
+
+    @keyframes sun {
+      0% {
+        transform: rotate(0);
+      }
+   
+
+      30% {
+        transform: rotate(42deg);
+      }
+
+      100% {
+        transform: rotate(135deg);
+      }
+    }
+
+    @keyframes light-effect {
+
+
+      0% {
+        background-color: rgba(0, 0, 0, 1);
+      }
+
+      7% {
+        background-color: transparent;
+      }
+
+      80% {
+        background-color: transparent;
+      }
+
+      90% {
+        background-color: black;
+      }
+
+      100% {
+        background-color: rgba(0, 0, 0, 1);
+      }
+    }
+    div:nth-child(6) {
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      clip-path: polygon(22% 320px, 74% 320px, 100% 320px);
+      width: 450px;
+      height: 450px;
+      animation: ground 4s cubic-bezier(0.4, 0, 0.49, 1) infinite;
+    }
+    @keyframes ground {
+      0% {
+        clip-path: polygon(22% 320px, 74% 320px, 100% 320px);
+      }
+   
+
+      30% {
+        clip-path: polygon(22% 320px, 74% 320px, 90% 400px);
+      }
+      62% {
+        clip-path: polygon(22% 320px, 74% 320px, 52% 345px);
+      }
+      65% {
+        clip-path: polygon(22% 320px, 74% 320px, 50% 350px);
+      }
+      68% {
+        clip-path: polygon(22% 320px, 74% 320px, 48% 352px);
+      }
+      90% {
+        clip-path: polygon(22% 320px, 74% 320px, 0% 350px);
+      }
+      100% {
+        clip-path: polygon(22% 320px, 74% 320px, 0% 310px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-div">
+    <div class="effect"></div>
+    <div class="circle">
+      <div class="land"></div>
+      <div class="left-side"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div class="shadow"></div>
+    </div>
+  </div>
+</body>
+
+</html>
