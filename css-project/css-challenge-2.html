@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days 2 Challenge</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    .main-div {
+      background-color: #3FAF82;
+      height: 70vh;
+      width: 300px;
+      margin: 15vh auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .fraim { position: relative; }
+    .div-1, .div-2, .div-3 {
+      height: 5px;
+      width: 55px;
+      position: relative;
+      background-color: #fff;
+      box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
+    }
+    .div-1 { top: 8px; }
+    .div-2 { top: 16px; }
+    .div-3 { top: 24px; }
+
+    .animate-1 { animation: animate-1 1.5s forwards; }
+    .animate-2 { animation: animate-2 1.5s forwards; }
+    .animate-3 { animation: animate-3 1.5s forwards; }
+
+    @keyframes animate-1 {
+      0% { top: 8px; }
+      35% { top: 21px; }
+      60% { top: 21px; transform: rotate(0deg); }
+      100% { top: 21px; transform: rotate(45deg); }
+    }
+    @keyframes animate-2 {
+      0% { top: 24px; }
+      35% { top: 11px; }
+      60% { top: 11px; transform: rotate(0deg); }
+      100% { top: 11px; transform: rotate(135deg); }
+    }
+    @keyframes animate-3 {
+      0% { transform: scale(1, 1); }
+      35% { transform: scale(0.5, 0.5); }
+      41%, 100% { visibility: hidden; }
+    }
+
+    .animate-1-re { animation: animate-1-re 1.5s forwards; }
+    .animate-2-re { animation: animate-2-re 1.5s forwards; }
+    .animate-3-re { animation: animate-3-re 1.5s forwards; }
+
+    @keyframes animate-1-re {
+      0% { top: 21px; transform: rotate(45deg); }
+      35% { top: 21px; transform: rotate(0deg); }
+      100% { top: 8px; }
+    }
+    @keyframes animate-2-re {
+      0% { top: 11px; transform: rotate(135deg); }
+      35% { top: 11px; transform: rotate(0deg); }
+      100% { top: 24px; }
+    }
+    @keyframes animate-3-re {
+      0% { visibility: hidden; transform: scale(0.5, 0.5); }
+      50% { visibility: hidden; transform: scale(0.5, 0.5); }
+      80%, 100% { visibility: visible; transform: scale(1, 1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-div">
+    <div class="fraim" id="fraim">
+      <div class="div-1"></div>
+      <div class="div-2"></div>
+      <div class="div-3"></div>
+    </div>
+  </div>
+  <script>
+    const fraim = document.getElementById('fraim');
+    const div1 = document.querySelector('.div-1');
+    const div2 = document.querySelector('.div-3');
+    const div3 = document.querySelector('.div-2');
+    let count = 0;
+
+    fraim.addEventListener('click', () => {
+      if (count === 0) {
+        div1.classList.add('animate-1');
+        div2.classList.add('animate-2');
+        div3.classList.add('animate-3');
+        document.documentElement.style.cssText = '--color: blue;';
+        count = 1;
+      } else {
+        div1.classList.add('animate-1-re');
+        div2.classList.add('animate-2-re');
+        div3.classList.add('animate-3-re');
+        document.documentElement.style.cssText = '--color: red;';
+        setTimeout(() => {
+          div1.classList.remove('animate-1');
+          div2.classList.remove('animate-2');
+          div3.classList.remove('animate-3');
+
+          div1.classList.remove('animate-1-re');
+          div2.classList.remove('animate-2-re');
+          div3.classList.remove('animate-3-re');
+          document.documentElement.style.cssText = '--color: red;';
+        }, 1500);
+        count = 0;
+      }
+    });
+  </script>
+</body>
+</html>
