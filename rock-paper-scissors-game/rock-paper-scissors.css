@@ -1,0 +1,64 @@
+* {
+  font-family: arial;
+}
+
+
+body {
+  margin: none;
+  padding: none;
+  background-color: black;
+}
+
+h1 {
+  color: white;
+  font-family: arial;
+  width: fit-content;
+  Margin: 10px auto;
+}
+
+.button-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button-div > div > button {
+  width: 1fr;
+  background-color: inherit;
+  margin: 10%;
+  border: 4px solid white;
+  border-radius: 50%;
+  padding: 10%;
+}
+
+img {
+  width: 100%;
+}
+
+.result-render {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+
+.move {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  margin-top: -30px;
+}
+
+.move > img {
+  width: 5%;
+}
+
+.render-div > div:first-child {
+  margin-top: -40px;
+}
+.score-render {
+  font-weight: bold;
+ // font-size: 30px;
+  text-align: center;
+  color: white;
+}
