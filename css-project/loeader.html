@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loeader</title>
+  <style>
+    *{
+      margin: 0px;
+    }
+    div.main {
+      border: 15px solid rgb(240, 240, 240);
+      border-radius: 50%;
+    }    
+    .call {
+      width: 100px;
+      height: 100px;
+    }
+    div + div {
+      border: solid 15px transparent;
+      animation: span 3s linear infinite;
+      border-radius: 50%;
+      border-top: 15px solid green;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes span {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <div class="main call">
+  </div>
+  <div class="hi call"></div>
+</body>
+</html>
