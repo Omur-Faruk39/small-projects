@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 50vh;
+      width: 290px;
+      background-color: rgb(255, 196, 0);
+      margin: auto;
+      display: flex;
+      user-select: none;
+    }
+    p {
+      color: white;
+      font-size: 30px;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      width: 200px;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      padding: 4px 0;
+    }
+    span {
+      font-weight: bold;
+      position: absolute;
+      margin-left: 10px;
+      bottom: -33px;
+    }
+    span:nth-child(1) { animation: ani1 5s ease-in-out infinite; }
+    span:nth-child(2) { animation: ani2 5s ease-in-out infinite; }
+    span:nth-child(3) { animation: ani3 5s ease-in-out infinite; }
+    span:nth-child(4) { animation: ani4 5s ease-in-out infinite; }
+    @keyframes ani1 {
+      0%, 10% { bottom: 0; }
+      23%, 100% { bottom: 6vh; }
+    }
+    @keyframes ani2 {
+      0%, 8% { bottom: -40px; }
+      23%, 41% { bottom: 0; }
+      54%, 100% { bottom: 50px; }
+    }
+    @keyframes ani3 {
+      0%, 41% { bottom: -40px; }
+      54%, 71% { bottom: 0; }
+      83%, 100% { bottom: 55px; }
+    }
+    @keyframes ani4 {
+      0%, 71% { bottom: -40px; }
+      83%, 100% { bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>I am a 
+      <span>Human</span>
+      <span>Man</span>
+      <span>Boy</span>
+      <span>Human</span>
+    </p>
+  </div>
+</body>
+</html>
