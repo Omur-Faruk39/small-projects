@@ -3,7 +3,7 @@ import Heading from "./components/Heading";
 
 function App() {
   return (
-    <div className="">
+    <div>
       <Heading />
       <Box />
     </div>
