@@ -1,69 +1,86 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
+import randomIndex from "../fuctionality/random-index";
+
+const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+const initState = () => {
+  const state = [];
+
+  while (numArray.length > 0) {
+    const randomInd = randomIndex(numArray.length);
+    state.push({
+      value: numArray[randomInd],
+      isRender: false,
+      result: false,
+    });
+    numArray.splice(randomInd, 1);
+  }
+
+  return state;
+};
 
 function Box() {
-  const [position, setPosition] = useState([]);
-  const [clickCount, setClickCount] = useState(0);
-
-  const randomNumber = (value) => {
-    return Math.floor(Math.random() * value);
-  };
+  const [num, setNum] = useState(initState());
+  const [clickCounter, setClickCounter] = useState(0);
 
   useEffect(() => {
-    const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
-    const state = [];
+    if (clickCounter % 2 === 0 && clickCounter !== 0) {
+      setClickCounter(0);
+      const editedNum = [];
 
-    while (numArray.length > 0) {
-      const value = randomNumber(numArray.length);
-      state.push([numArray[value], false, false]);
-      numArray.splice(value, 1);
-    }
+      setNum((pre) => {
+        pre.forEach((item, i) => {
+          if (!item.result && item.isRender) {
+            editedNum.push({ ...item, index: i });
+          }
+        });
 
-    setPosition(state);
-  }, []);
 
-  useEffect(() => {
-    if (clickCount % 2 === 0 && clickCount !== 0) {
-      setPosition((pre) => {
-        let newArray = pre.filter((item) => item[1]);
 
-        if (newArray.length === 2 && newArray[0][0] === newArray[1][0]) {
-          return pre.map((item) =>
-            item[0] === newArray[0][0] ? [item[0], true, true] : item
-          );
+        if (editedNum[0].value === editedNum[1].value) {
+          const newState = [...pre];
+          newState[editedNum[0].index] = {
+            ...pre[editedNum[0].index], isRender: true, result: true
+          };
+          newState[editedNum[1].index] = {
+            ...pre[editedNum[1].index], isRender: true, result: true
+          };
+          return newState;
+          
+        } else {
+          const newState = [...pre];
+          newState[editedNum[0].index] = {
+            ...pre[editedNum[0].index], isRender: false
+          };
+          newState[editedNum[1].index] = {
+            ...pre[editedNum[1].index], isRender: false
+          };
+          return newState;
         }
 
 
-        setTimeout(() => {
-          setPosition((pre) =>
-            pre.map((item) =>
-              item[1] && !item[2] ? [item[0], false, false] : item
-            )
-          );
-        }, 1000);
-
-        return pre;
       });
     }
-  }, [clickCount]);
+  }, [clickCounter]);
 
-  const handler = (e) => {
-    setClickCount((pre) => pre + 1);
-    const index = Number(e.target.getAttribute("data-index"));
-    setPosition((pre) =>
-      pre.map((item, i) => (i === index ? [item[0], true, item[2]] : item))
-    );
+  const clickHandler = (position) => {
+    setClickCounter((pre) => pre + 1);
+    setNum((pre) => {
+      return pre.map((item, i) =>
+        i === position ? { ...item, isRender: true } : item
+      );
+    });
   };
 
   return (
-    <div>
-      {position.map((num, index) => (
+    <div className="grid grid-cols-4 gap-4 max-w-100 m-auto">
+      {num.map((item, i) => (
         <Button
-          number={num[0]}
-          key={index}
-          position={index}
-          handler={handler}
-          isRender={num[1]}
+          key={i}
+          number={item.value}
+          handler={clickHandler}
+          position={i}
+          isRender={item.isRender}
         />
       ))}
     </div>
